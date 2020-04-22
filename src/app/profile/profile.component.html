@@ -1,0 +1,112 @@
+<div class="content">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="title">Profile</h5>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <input type="text" class="form-control" name="name" [(ngModel)]='profile.name' placeholder="Name">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 pr-1">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Email address</label>
+                                    <input type="email" name="email" [(ngModel)]='profile.emailId' class="form-control" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="col-md-6 pl-1">
+                                <div class="form-group">
+                                    <label for="phoneNum">Phone Number</label>
+                                    <input type="number" name="phoneNum" [(ngModel)]='profile.phoneNumber' class="form-control" placeholder="Phone Number">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Address</label>
+                                    <input type="text" class="form-control" placeholder="Home Address" name='address' [(ngModel)]="profile.address">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 pr-1">
+                                <div class="form-group">
+                                    <label>City</label>
+                                    <input type="text" class="form-control" placeholder="City" name="city" [(ngModel)]="profile.city">
+                                </div>
+                            </div>
+                            <div class="col-md-4 px-1">
+                                <div class="form-group">
+                                    <label>Country</label>
+                                    <input type="text" class="form-control" placeholder="Country" name="country" [(ngModel)]="profile.country">
+                                </div>
+                            </div>
+                            <div class="col-md-4 pl-1">
+                                <div class="form-group">
+                                    <label>Zip Code</label>
+                                    <input type="number" class="form-control" placeholder="ZIP Code" name="zip" [(ngModel)]="profile.zipCode">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>About Me</label>
+                                    <textarea rows="4" cols="80" class="form-control" name="about" [(ngModel)]="profile.aboutMe" placeholder="Here can be your description"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="row">
+                        <div class="col-md-10 pr-1">
+                        </div>
+                        <div class="col-md-2 pl-1">
+                            <div class="form-group">
+                                <button type='submit' class="btn btn-outline-info" (click)="SaveProfile()">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card card-user">
+                <div class="image">
+                    <!-- <img src="../assets/img/145152.jpg" style="height:150px;width:370px" alt="..."> -->
+                </div>
+                <div class="card-body">
+                    <div class="author">
+                        <a [routerLink]="">
+                            <!-- <img class="avatar border-gray" src="../assets/img/145152.jpg" style="height:150px;width:370px" alt="..."> -->
+                            <h5 class="title">{{profile.name}}</h5>
+                        </a>
+                    </div>
+                    <p class="description text-center">
+                        {{profile.aboutMe}}
+                    </p>
+                </div>
+                <hr>
+                <div class="button-container">
+                    <button [routerLink]="" class="btn btn-neutral btn-icon btn-round btn-lg">
+            <i class="fa fa-facebook"></i>
+          </button>
+                    <button [routerLink]="" class="btn btn-neutral btn-icon btn-round btn-lg">
+            <i class="fa fa-twitter"></i>
+          </button>
+                    <button [routerLink]="" class="btn btn-neutral btn-icon btn-round btn-lg">
+            <i class="fa fa-google-plus-official"></i>
+          </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

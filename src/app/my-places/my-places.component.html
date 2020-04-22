@@ -1,0 +1,66 @@
+<!-- Place List -->
+<div class="content">
+    <div class="row">
+        <div class="col-lg-4 col-md-4" *ngFor="let item of places">
+            <div class="card card-chart">
+                <div class="card-header">
+                    <h5 class="card-title">{{item.x.placeName}}</h5>
+                    Address:{{item.x.address}} <br> Opening Hours:{{item.x.openingHours}}
+                </div>
+                <div class="card-body">
+                    <div class="chart-area">
+                        <div class="row">
+                            <agm-map [latitude]="item.x.lattitude" [longitude]="item.x.longitude" [scrollwheel]='false' [zoom]='8' style="height:200px;width:100%">
+                                <agm-marker [latitude]="item.x.lattitude" [longitude]="item.x.longitude"></agm-marker>
+                            </agm-map>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <button (click)='editPopUp(editPOP,item.x)'><i class="fa fa-edit"></i> Edit</button> &nbsp;
+                        <button (click)='deleteConfirmation(deleteConfirmationpopup,item.x)'><i class="fa fa-trash"></i>
+              Delete</button>
+                    </div>
+                </div>
+            </div>
+            <br>
+        </div>
+    </div>
+</div>
+<!-- Place List -->
+
+<!-- Place Edit Modal -->
+<ng-template #editPOP let-modal>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Update Place</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+        </div>
+        <div class="modal-body">
+            <app-home (setAddress)="getAddress($event)" adressType={{key}}></app-home>
+        </div>
+    </div>
+</ng-template>
+<!-- Place Edit Modal -->
+
+<!-- Delete Confirmation Modal -->
+<ng-template #deleteConfirmationpopup let-modal>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Delete Place</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+        </div>
+        <div class="modal-body">
+            <h5>Are you sure, You want to delete the place ? </h5>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success form-control" (click)="deletePlace()">Delete</button>
+        </div>
+    </div>
+</ng-template>
+<!-- Delete Confirmation Modal -->

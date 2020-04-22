@@ -1,0 +1,50 @@
+<!-- location Card -->
+<div class="row" [hidden]='isHidden'>
+    <div class="col-lg-4 col-md-6">
+        <div class="card card-chart">
+            <div class="card-header">
+                <h5 class="card-title">{{PlaceName}}</h5>
+                Address:{{placeAddress}} <br> Opening Hours:10am to 12pm
+            </div>
+            <div class="card-body">
+                <div class="chart-area">
+                    <div class="row">
+                        <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]='false' [zoom]='zoom' style="height:200px;width:100%">
+                            <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+                        </agm-map>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="stats" *ngIf="!isEdit">
+                    <button (click)="saveToMyPlaces()"> <i class="fa fa-save"></i> Save to My Places</button>
+                </div>
+                <div class="stats" *ngIf="isEdit">
+                    <button (click)="updatePlace()"> <i class="fa fa-upload"></i> Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- location Card -->
+
+<!-- Autocomplete -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-12">
+            <label>
+        <h6>Search Place</h6>
+      </label>
+            <input type='text' id='place' class="form-control" [(ngModel)]="autocompleteInput" #search autocomplete="off" autocapitalize="off">
+        </div>
+    </div>
+</div>
+<!-- Autocomplete -->
+
+<!-- Google Map -->
+<div class="row" style="margin-top: 1rem;">
+    <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]='false' [zoom]='zoom' style="height:500px;width:100%">
+        <agm-marker *ngFor="let item of latlongs" [latitude]='item.latitude' [longitude]='item.longitude'></agm-marker>
+    </agm-map>
+</div>
+<!-- Google Map -->

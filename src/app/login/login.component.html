@@ -1,0 +1,115 @@
+<div class="container">
+    <div class="row" style="margin-top: 10rem;">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            <div class="container login">
+                <div class="row-sm-4">
+                    <div class="form-group">
+                        <span style="text-align:center; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+              <h4>ACCOUNT LOGIN</h4>
+            </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">
+              <h6>Email ID:</h6>
+            </label>
+                        <input type="text" class="form-control" placeholder="Email ID" [(ngModel)]="Login.emailId" name="UNAMe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">
+              <h6>Password:</h6>
+            </label>
+                        <input class="form-control" placeholder="Password" [(ngModel)]="Login.password" type="password" name="pass" required>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-outline-success form-control" type="submit" (click)="login()">
+              <i class="fa fa-long-arrow-right"></i> Login</button>
+                    </div>
+                    <div class="form-group">
+                        <span style="text-align: center;">
+              <h6>OR</h6>
+            </span>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-outline-danger form-control" type="submit" (click)="socialMediaLogin('Google')">
+            <i class="fa fa-google"></i> Login with Google</button>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-outline-primary form-control" type="submit" (click)="socialMediaLogin('Facebook')">
+              <i class="fa fa-facebook"></i> Login with Facebook</button>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-outline-info form-control" type="submit" (click)="socialMediaLogin('Twitter')">
+              <i class="fa fa-twitter"></i> Login with Twitter</button>
+                    </div>
+                    <div class="form-group">
+                        <span class="float-left">
+              <a [routerLink]="" (click)="signUp(registration)">Sign up</a>
+            </span>
+                        <span class="float-right">
+              <a [routerLink]="" (click)="forgetPasswordPopUp(forgetPass)">Forget Password</a>
+            </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+</div>
+
+<ng-template #registration let-modal>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Registration</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="row-sm-4">
+                    <div class="form-group">
+                        <label for="usr">
+              <h6>Email ID:</h6>
+            </label>
+                        <input type="text" class="form-control" placeholder="Username" [(ngModel)]="signUpObj.emailId" name="UNAMe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">
+              <h6>Password:</h6>
+            </label>
+                        <input class="form-control" placeholder="Password" [(ngModel)]="signUpObj.password" type="password" name="pass" required>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-success form-control" (click)="registerUser()">Submit</button>
+    </div>
+</ng-template>
+
+
+<ng-template #forgetPass let-modal>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Forget Password</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+        </div>
+        <div class="modal-body">
+            <div class="row-sm-4">
+                <div class="form-group">
+                    <label for="email">
+            <h6>Email ID:</h6>
+          </label>
+                    <input type="text" class="form-control" placeholder="Enter Email ID" [(ngModel)]="emailID" name="email" required>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-success form-control" (click)="foregetPassword()">Submit</button>
+    </div>
+</ng-template>
