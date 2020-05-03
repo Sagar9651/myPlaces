@@ -30,10 +30,14 @@ export class MyPlacesComponent implements OnInit {
   getPlaces() {
     this.places = [];
     this.geoervice.getPlaces(this.userId).then(res => {
+      if (res != null) {
       Object.keys(res).map(x => {
         this.places.push({ x: res[x] });
         return this.places;
       });
+    } else {
+      this.toastr.error('No Places Available');
+    }
     });
   }
 

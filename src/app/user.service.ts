@@ -7,6 +7,7 @@ import * as firebase from 'firebase/app';
 import { Profile } from './profile.model';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @Injectable(
   {
@@ -18,7 +19,7 @@ export class UserService {
   profile = new  BehaviorSubject([]);
 
   constructor(
-    private db: AngularFireDatabase, private toastr: ToastrService
+    private db: AngularFireDatabase, private toastr: ToastrService, private af: AngularFirestore, private fileStorage: AngularFireStorage
   //  public db: AngularFirestore
    ) { }
 
@@ -85,4 +86,20 @@ export class UserService {
     .then(_ => console.log('Profile Deleted'))
     .catch(err => console.log(err));
 }
+
+/**
+ * File uplaod using AngularFireStorage (into Storage)
+ */
+uploadFile(event) {
+  const userId = localStorage.getItem('uId');
+  const newFileKey = Math.random().toString(36).substring(2);
+  this.fileStorage.upload('/userFiles/' + userId + '/' + newFileKey, event.target.files[0])
+  .then(_ => {
+    this.toastr.success('File Saved Successfully');
+  })
+  .catch(err => {
+    this.toastr.error(err);
+  });
+}
+
 }

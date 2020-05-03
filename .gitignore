@@ -66,4 +66,4 @@ node_modules/
 
 # angular environment files
 
-src/environments
+src/environments/

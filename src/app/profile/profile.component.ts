@@ -65,4 +65,8 @@ export class ProfileComponent implements OnInit {
     this.userService.updateProfile(this.profile);
   }
 
+  upload(event) {
+    this.userService.uploadFile(event);
+  }
+
 }
